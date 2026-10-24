@@ -57,13 +57,6 @@
                 "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
                 "d67a2468-f1c7-4097-8e4a-656ec9f055dc"
               ]
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -432,6 +425,19 @@
                   "new": false,
                   "number": 7,
                   "score": ""
+                },
+                {
+                  "id": "e6a7e95a-22d0-4f6f-b3ef-322b419edd0f",
+                  "title": "Обход прав пользователя",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Эскалация привилегий",
+                  "description": "Легитимный участник получает доступ к функциям администратора, так как сервер не проверяет его роль.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -440,15 +446,8 @@
                 "repudiation": 0,
                 "informationDisclosure": 1,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 0
+                "elevationOfPrivilege": 1
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -879,6 +878,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "A product security team",
-    "threatTop": 7
+    "threatTop": 8
   }
 }
