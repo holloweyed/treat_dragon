@@ -239,7 +239,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Эскалация привилегий",
-                  "description": "Внешний нарушитель пытается подобрать пароль. В модели не заданы ограничения попыток входа.",
+                  "description": "Внешний нарушитель пытается подобрать пароль к учетной записи. В модели не задано ограничение количества неудачных попыток входа. В случае успеха нарушитель получает доступ к чужому аккаунту.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -252,7 +252,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Отказ в обслуживании",
-                  "description": "Внешний нарушитель отправляет множество запросов, чтобы сайт перестал работать для обычных людей.",
+                  "description": "Внешний нарушитель отправляет множественные автоматизированные запросы к Web UI. Из-за отсутствия защиты от ботов в модели, сервер перегружается, и интерфейс становится недоступен для легитимных пользователей.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -265,7 +265,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Подмена данных",
-                  "description": "Легитимный участник внедряет вредоносный код в поля ввода, чтобы украсть сессию другого пользователя.",
+                  "description": "Легитимный участник внедряет вредоносный скрипт в поля ввода. Так как проверка и экранирование данных в модели не заданы, скрипт выполняется в браузере другого пользователя и позволяет украсть его сессию.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -275,11 +275,11 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 1
+                "denialOfService": 2,
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -406,7 +406,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Подмена данных",
-                  "description": "Внешний нарушитель отправляет вредоносный код через UI. В модели не задана проверка входных данных, поэтому код попадает в базу.",
+                  "description": "Внешний нарушитель передает через Web UI данные, содержащие команды для базы данных. В модели не задана проверка входных данных, поэтому Web Service передает вредоносный код напрямую в PostgreSQL.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -432,7 +432,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Эскалация привилегий",
-                  "description": "Легитимный участник получает доступ к функциям администратора, так как сервер не проверяет его роль.",
+                  "description": "Легитимный участник пытается вызвать административную функцию сервиса. В модели не задана проверка ролей, поэтому Web Service позволяет обычному пользователю выполнить действие, доступное только администратору.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -442,11 +442,11 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 2,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 1
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -628,13 +628,6 @@
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -832,7 +825,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Раскрытие информации",
-                  "description": "Внешний нарушитель перехватывает трафик на границе Internet. В модели не задан флаг Encrypted, поэтому считаем канал незащищенным.",
+                  "description": "Внешний нарушитель перехватывает трафик на границе Internet. В модели не задан флаг Encrypted, поэтому считаем канал незащищенным, и данные передаются в открытом виде.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -846,7 +839,7 @@
               ],
               "threatFrequency": {
                 "tampering": 1,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             },
@@ -867,7 +860,17 @@
                 "x": 470,
                 "y": 230
               }
-            ]
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ]
       }
