@@ -57,6 +57,13 @@
                 "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
                 "d67a2468-f1c7-4097-8e4a-656ec9f055dc"
               ]
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -130,8 +137,8 @@
                 "text": "Web UI"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -227,12 +234,60 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "7d10ebb1-86fb-4a77-a559-3286434e8709",
+                  "title": "Подбор пароля",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Эскалация привилегий",
+                  "description": "Внешний нарушитель пытается подобрать пароль. В модели не заданы ограничения попыток входа.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "e8b4c598-c578-4536-9e97-f6e20415df55",
+                  "title": "Перегрузка сайта",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Отказ в обслуживании",
+                  "description": "Внешний нарушитель отправляет множество запросов, чтобы сайт перестал работать для обычных людей.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                },
+                {
+                  "id": "ea318cf8-6a1e-4b46-8f98-3d4a536c3dca",
+                  "title": "Внедрение скрипта",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Подмена данных",
+                  "description": "Легитимный участник внедряет вредоносный код в поля ввода, чтобы украсть сессию другого пользователя.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -249,8 +304,8 @@
                 "text": "Web Service"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -346,12 +401,54 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "141c6f54-137a-4226-8bc8-8c85ce12a300",
+                  "title": "SQL-инъекция",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Подмена данных",
+                  "description": "Внешний нарушитель отправляет вредоносный код через UI. В модели не задана проверка входных данных, поэтому код попадает в базу.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                },
+                {
+                  "id": "3f4cb706-deec-42d2-a6fb-d0bc53576c00",
+                  "title": "Просмотр чужих данных",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Раскрытие информации",
+                  "description": "Легитимный участник меняет номер в ссылке и видит чужую информацию, так как сервер не проверяет владельца.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -782,6 +879,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "A product security team",
-    "threatTop": 2
+    "threatTop": 7
   }
 }
