@@ -54,8 +54,8 @@
                 "5170eb10-abe9-48ec-8c74-b5ad508c28ef"
               ],
               "crossingFlows": [
-                "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
-                "d67a2468-f1c7-4097-8e4a-656ec9f055dc"
+                "d67a2468-f1c7-4097-8e4a-656ec9f055dc",
+                "76b24277-4066-42a3-b75f-6b3e2c5c9d28"
               ]
             }
           },
@@ -87,8 +87,8 @@
                 "97731369-531c-4c22-b017-8428cff90ac1"
               ],
               "crossingFlows": [
-                "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
-                "d67a2468-f1c7-4097-8e4a-656ec9f055dc"
+                "d67a2468-f1c7-4097-8e4a-656ec9f055dc",
+                "76b24277-4066-42a3-b75f-6b3e2c5c9d28"
               ]
             }
           },
@@ -419,7 +419,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Раскрытие информации",
-                  "description": "Легитимный участник меняет номер в ссылке и видит чужую информацию, так как сервер не проверяет владельца.",
+                  "description": "Легитимный участник изменяет идентификатор объекта в запросе (например, номер заявки). Так как в модели не задана проверка прав владельца, сервер выдает чужие данные.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -444,7 +444,7 @@
                 "spoofing": 0,
                 "tampering": 1,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 1
               }
@@ -464,8 +464,8 @@
                 "text": "PostgresSQL"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -561,7 +561,7 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -592,14 +592,40 @@
                   "new": false,
                   "number": 2,
                   "score": ""
+                },
+                {
+                  "id": "b9ddf360-1da6-4837-a1d5-420750303d3c",
+                  "title": "Кража данных из базы",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Раскрытие информации",
+                  "description": "Нарушитель получает доступ к инфраструктуре облака (Public Cloud) в обход Web Service. Так как сетевые ограничения для PostgreSQL не заданы в модели, нарушитель подключается к базе напрямую и скачивает все данные.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                },
+                {
+                  "id": "e9399e66-fdb5-45a7-9699-5a0dbdbfc0d5",
+                  "title": "Потеря данных при сбое",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Отказ в обслуживании",
+                  "description": "В модели не описано резервное копирование. При сбое базы данные будут потеряны навсегда.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 2,
-                "denialOfService": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 1,
                 "elevationOfPrivilege": 0
               }
             },
@@ -610,186 +636,6 @@
               ],
               "name": null
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "a10125fd-004a-44d9-b4a8-dffb49de91c4",
-                "c54864d8-740f-40cb-bbb9-6ba008a336b6"
-              ]
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "Data Flow"
-                  },
-                  "labelText": {
-                    "text": "",
-                    "textAnchor": "middle",
-                    "textVerticalAnchor": "middle"
-                  },
-                  "labelBody": {
-                    "ref": "labelText",
-                    "refRx": "50%",
-                    "refRy": "60%",
-                    "fill": "#fff",
-                    "strokeWidth": 0
-                  }
-                },
-                "markup": [
-                  {
-                    "tagName": "ellipse",
-                    "selector": "labelBody"
-                  },
-                  {
-                    "tagName": "text",
-                    "selector": "labelText"
-                  }
-                ],
-                "position": {
-                  "distance": 0.5,
-                  "args": {
-                    "keepGradient": true,
-                    "ensureLegibility": true
-                  }
-                }
-              }
-            ],
-            "id": "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
-            "source": {
-              "cell": "5170eb10-abe9-48ec-8c74-b5ad508c28ef",
-              "port": "bedbb764-d505-4937-852b-150f4115f25d"
-            },
-            "target": {
-              "cell": "09b86abf-65dd-49c2-9746-0cf9282f82a1",
-              "port": "2005b935-d71c-4970-85b5-be05f8c2ecd2"
-            },
-            "vertices": [
-              {
-                "x": 470,
-                "y": 230
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "a10125fd-004a-44d9-b4a8-dffb49de91c4",
-                "c54864d8-740f-40cb-bbb9-6ba008a336b6"
-              ]
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "Data Flow"
-                  },
-                  "labelText": {
-                    "text": "",
-                    "textAnchor": "middle",
-                    "textVerticalAnchor": "middle"
-                  },
-                  "labelBody": {
-                    "ref": "labelText",
-                    "refRx": "50%",
-                    "refRy": "60%",
-                    "fill": "#fff",
-                    "strokeWidth": 0
-                  }
-                },
-                "markup": [
-                  {
-                    "tagName": "ellipse",
-                    "selector": "labelBody"
-                  },
-                  {
-                    "tagName": "text",
-                    "selector": "labelText"
-                  }
-                ],
-                "position": {
-                  "distance": 0.5,
-                  "args": {
-                    "keepGradient": true,
-                    "ensureLegibility": true
-                  }
-                }
-              }
-            ],
-            "id": "d67a2468-f1c7-4097-8e4a-656ec9f055dc",
-            "source": {
-              "cell": "09b86abf-65dd-49c2-9746-0cf9282f82a1",
-              "port": "2005b935-d71c-4970-85b5-be05f8c2ecd2"
-            },
-            "target": {
-              "cell": "5170eb10-abe9-48ec-8c74-b5ad508c28ef",
-              "port": "bedbb764-d505-4937-852b-150f4115f25d"
-            },
-            "vertices": [
-              {
-                "x": 470,
-                "y": 330
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -872,12 +718,162 @@
               "port": "2005b935-d71c-4970-85b5-be05f8c2ecd2"
             },
             "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "70ef49dc-2f15-4b7a-8b83-66a4e601dc4a",
+                  "title": "Подмена ответа",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Подмена данных",
+                  "description": "Нарушитель вмешивается в канал и подменяет ответ сервера, чтобы обмануть пользователя.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "a10125fd-004a-44d9-b4a8-dffb49de91c4",
+                "c54864d8-740f-40cb-bbb9-6ba008a336b6"
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "d67a2468-f1c7-4097-8e4a-656ec9f055dc",
+            "source": {
+              "cell": "09b86abf-65dd-49c2-9746-0cf9282f82a1",
+              "port": "2005b935-d71c-4970-85b5-be05f8c2ecd2"
+            },
+            "target": {
+              "cell": "5170eb10-abe9-48ec-8c74-b5ad508c28ef",
+              "port": "bedbb764-d505-4937-852b-150f4115f25d"
+            },
+            "vertices": [
+              {
+                "x": 470,
+                "y": 330
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "dbfcd8f7-1ef8-4cdc-8aa3-072112007295",
+                  "title": "Перехват данных",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Раскрытие информации",
+                  "description": "Внешний нарушитель перехватывает трафик на границе Internet. В модели не задан флаг Encrypted, поэтому считаем канал незащищенным.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "a10125fd-004a-44d9-b4a8-dffb49de91c4",
+                "c54864d8-740f-40cb-bbb9-6ba008a336b6"
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "76b24277-4066-42a3-b75f-6b3e2c5c9d28",
+            "source": {
+              "cell": "5170eb10-abe9-48ec-8c74-b5ad508c28ef",
+              "port": "bedbb764-d505-4937-852b-150f4115f25d"
+            },
+            "target": {
+              "cell": "09b86abf-65dd-49c2-9746-0cf9282f82a1",
+              "port": "2005b935-d71c-4970-85b5-be05f8c2ecd2"
+            },
+            "vertices": [
+              {
+                "x": 470,
+                "y": 230
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 2,
     "reviewer": "A product security team",
-    "threatTop": 8
+    "threatTop": 12
   }
 }
